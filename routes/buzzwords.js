@@ -20,7 +20,6 @@ router
     }
   })
   .put(urlEncodedParser, (req, res) => {
-    console.log(req.body.points)
     for (let i = 0; i < buzzwords.length; i++) {
       if (buzzwords[i].buzzword === req.body.buzzword) {
         buzzwords[i].points = req.body.points;
@@ -30,7 +29,12 @@ router
       }
     }
   })
-  .delete((req, res) => {
+  .delete(urlEncodedParser, (req, res) => {
+    for (let i = 0; i < buzzwords.length; i++) {
+      if (buzzwords[i].buzzword === req.body.buzzword) {
+        buzzwords.splice(i, 1);
+      }
+    }
     res.send({ success: true });
   });
 
