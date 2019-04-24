@@ -5,6 +5,7 @@ const jsonParser = bodyParser.json();
 const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 
 let buzzwords = [];
+let score = 0;
 
 router
   .route('/')
@@ -36,6 +37,6 @@ router
       }
     }
     res.send({ success: true });
-  });
+  })
 
 module.exports = router;
